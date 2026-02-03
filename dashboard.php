@@ -1,7 +1,13 @@
 <?php
 session_start();
+
 if (!isset($_SESSION['username'])) {
     header("Location: login.php");
+    exit;
 }
-echo "Selamat datang, " . $_SESSION['username'];
-?>
+
+if ($_SESSION['role'] == 'admin') {
+    include 'admin.php';
+} else {
+    include 'user.php';
+}
