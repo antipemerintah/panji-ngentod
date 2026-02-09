@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 13, 2026 at 08:49 AM
+-- Generation Time: Feb 09, 2026 at 05:31 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -30,15 +30,17 @@ SET time_zone = "+00:00";
 CREATE TABLE `user` (
   `id` int(50) NOT NULL,
   `username` varchar(50) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `role` enum('admin','user') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `password`) VALUES
-(123456789, 'kian', '123');
+INSERT INTO `user` (`id`, `username`, `password`, `role`) VALUES
+(1123456791, 'bapak_joko', 'joko101010', 'user'),
+(1123456792, 'kk', '$2y$10$UMHqY0g.ATvgjvMJUK/vTeeCi0ZTqfhhXsWWPsI58yLGwYQjckmBi', 'user');
 
 --
 -- Indexes for dumped tables
@@ -58,7 +60,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123456790;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1123456793;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
