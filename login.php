@@ -7,12 +7,14 @@ if (isset($_POST['login'])) {
     $password = $_POST['password'];
 
     $query = mysqli_query($conn,
-        "SELECT * FROM user 
-         WHERE username='$username' AND password='$password'"
-    );
+    "SELECT * FROM user WHERE username='$username'"
+);
 
-    if (mysqli_num_rows($query) > 0) {
-        $data = mysqli_fetch_assoc($query);
+
+if (mysqli_num_rows($query) > 0) {
+    $data = mysqli_fetch_assoc($query);
+
+    if(password_verify($password, $data['password'])){
 
         $_SESSION['username'] = $data['username'];
         $_SESSION['role'] = $data['role'];
@@ -22,10 +24,17 @@ if (isset($_POST['login'])) {
         } else {
             header("Location: user.php");
         }
+
         exit;
+
     } else {
         $error = "Username atau password salah!";
     }
+
+} else {
+    $error = "Username atau password salah!";
+}
+
 }
 ?>
 <!DOCTYPE html>

@@ -5,9 +5,13 @@ if (isset($_POST['register'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
+    //hash password / endcrip
+    $has = password_hash($password, PASSWORD_DEFAULT);
+
+
     mysqli_query($conn,
         "INSERT INTO user (username, password, role)
-         VALUES ('$username', '$password', 'user')"
+         VALUES ('$username', '$has', 'user')"
     );
 
     header("Location: login.php");
